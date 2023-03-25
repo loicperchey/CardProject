@@ -9,22 +9,24 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Card")
-public class Card {
+public abstract class Card {
         @Id
         @GeneratedValue
-        protected int id;
+        protected int id_card;
 
         protected String nom;
 
         protected String editor;
+
+        protected String game;
         protected Date dateSortie;
 
-    public int getId() {
-        return id;
+    public int getIdCard() {
+        return id_card;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCard(int id_card) {
+        this.id_card = id_card;
     }
 
     public String getNom() {
@@ -51,13 +53,31 @@ public class Card {
         this.dateSortie = dateSortie;
     }
 
-    public Card(String nom, String editor, Date dateSortie) {
+    public String getGame() {
+        return game;
+    }
+
+    public void setGame(String game) {
+        this.game = game;
+    }
+
+    public Card(String nom, String editor, String game, Date dateSortie) {
         this.nom = nom;
         this.editor = editor;
+        this.game = game;
         this.dateSortie = dateSortie;
     }
 
-
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id_card=" + id_card +
+                ", nom='" + nom + '\'' +
+                ", editor='" + editor + '\'' +
+                ", game='" + game + '\'' +
+                ", dateSortie=" + dateSortie +
+                '}';
+    }
 }
 
 
