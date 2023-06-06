@@ -1,70 +1,39 @@
 package com.example.CardProjectSpring.service;
 
 import com.example.CardProjectSpring.entity.MagicCard;
-import com.example.CardProjectSpring.repository.MagicCardRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
-public class MagicCardServiceImpl implements MagicCardRepository {
+public class MagicCardServiceImpl implements MagicCardService{
     @Override
-    public <S extends MagicCard> S save(S entity) {
+    public MagicCard saveMagicCard(MagicCard magicCard) {
         return null;
     }
 
     @Override
-    public <S extends MagicCard> Iterable<S> saveAll(Iterable<S> entities) {
+    public List<MagicCard> findMagicCardList() {
         return null;
     }
 
     @Override
-    public Optional<MagicCard> findById(Integer integer) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Integer integer) {
-        return false;
-    }
-
-    @Override
-    public Iterable<MagicCard> findAll() {
+    public MagicCard updateMagicCard(MagicCard magicCard, int id) {
         return null;
     }
 
     @Override
-    public Iterable<MagicCard> findAllById(Iterable<Integer> integers) {
+    public void deleteMagicCardById(int id) {
+
+    }
+
+    @Override
+    public MagicCard findMagicCardById(int id) {
         return null;
     }
 
     @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Integer integer) {
-
-    }
-
-    @Override
-    public void delete(MagicCard entity) {
-
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Integer> integers) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends MagicCard> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
+    public List<MagicCard> findMagicCardByName(String name) {
+        return null;
     }
 }

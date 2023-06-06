@@ -1,39 +1,43 @@
 package com.example.CardProjectSpring.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
-import java.util.Date;
-import java.util.List;
+import java.sql.Date;
+import java.util.ArrayList;
 
 @Entity
 @Table(name="FleshAndBloodCard")
-public class FleshAndBloodCard extends Card{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class FleshAndBloodCard extends GeneralCaracteristicCard {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    private int id_Flesh_And_Blood_Card;
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
+    private int id;
 
-    public int pitch;
+    private int cost;
 
-    public int cost;
+    private int pitch;
 
-    public String type;
+    private ArrayList<String> type;
 
-    public int attack;
 
-    public int defense;
-
-    @ManyToMany
-    @JoinTable(name="FlESHCARD_DECK",
-            joinColumns = @JoinColumn(name = "FLESHCARD_ID", referencedColumnName = "id_Flesh_And_Blood_Card"),
-            inverseJoinColumns = @JoinColumn(name="DECK_ID", referencedColumnName = "id_deck")
-    )
-    public List<Deck> listDeckFleshAndBlood;
-    public int getId_Flesh_And_Blood_Card() {
-        return id_Flesh_And_Blood_Card;
+    public int getId() {
+        return id;
     }
 
-    public void setId_Flesh_And_Blood_Card(int id_Flesh_And_Blood_Card) {
-        this.id_Flesh_And_Blood_Card = id_Flesh_And_Blood_Card;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public int getPitch() {
@@ -44,40 +48,21 @@ public class FleshAndBloodCard extends Card{
         this.pitch = pitch;
     }
 
-    public int getCost() {
-        return cost;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
-    public String getType() {
+    public ArrayList<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ArrayList<String> type) {
         this.type = type;
     }
 
-    public int getAttack() {
-        return attack;
+    public FleshAndBloodCard() {
     }
 
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public FleshAndBloodCard(String nom, String editor, String game, Date dateSortie, int id_Flesh_And_Blood_Card) {
-        super(nom, editor, game, dateSortie);
-        this.id_Flesh_And_Blood_Card = id_Flesh_And_Blood_Card;
+    public FleshAndBloodCard(String name, String edition, Date date, int cost, int pitch, ArrayList<String> type) {
+        super(name, edition, date);
+        this.cost = cost;
+        this.pitch = pitch;
+        this.type = type;
     }
 }

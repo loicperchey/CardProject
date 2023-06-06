@@ -4,16 +4,15 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/Deckdatabase</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3308/Deckdatabase?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.password">Baragon$2973</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="hibernate.show_sql">true</property>
 
-        <mapping class="com.example.CardProjectSpring.entity.Card" />
-        <mapping class="com.example.CardProjectSpring.entity.MagicCard" />
+        <mapping class="com.example.CardProjectSpring.entity.GeneralCaracteristicCard" />
         <mapping class="com.example.CardProjectSpring.entity.FleshAndBloodCard" />
-        <mapping class="com.example.CardProjectSpring.entity.Deck" />
+        <mapping class="com.example.CardProjectSpring.entity.MagicCard" />
     </session-factory>
 </hibernate-configuration>
