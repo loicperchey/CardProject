@@ -10,5 +10,4 @@ class CardProjectSpringApplicationTests {
 	void contextLoads() {
 	}
 
-
 }

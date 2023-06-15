@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MagicDeckComponent } from './magic-deck/magic-deck.component';
 import { FleshAndBloodDeckComponent } from './flesh-and-blood-deck/flesh-and-blood-deck.component';
 import { FooterComponent } from './footer/footer.component';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
