@@ -11,5 +11,6 @@
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
         <property name="hibernate.show_sql">true</property>
         <mapping class="com.example.CardProjectSpring.entity.FleshAndBloodCard" />
+        <mapping class="com.example.CardProjectSpring.entity.MagicCard" />
     </session-factory>
 </hibernate-configuration>

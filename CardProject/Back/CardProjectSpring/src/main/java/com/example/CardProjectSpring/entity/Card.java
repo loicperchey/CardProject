@@ -4,17 +4,28 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.time.Year;
 
-@Table(name="Card")
+
+
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@Setter
 @MappedSuperclass
 public class Card {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
     public int id;
 
     public String name;
+
+    public String editor;
+
+    public String edition;
+
+    public Year release;
 
     public int getId() {
         return id;
@@ -32,11 +43,38 @@ public class Card {
         this.name = name;
     }
 
+    public String getEditor() {
+        return editor;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    public Year getRelease() {
+        return release;
+    }
+
+    public void setRelease(Year release) {
+        this.release = release;
+    }
+
     public Card() {
     }
 
-    public Card(String name) {
+    public Card(String name, String editor, String edition, Year release) {
         this.name = name;
+        this.editor = editor;
+        this.edition = edition;
+        this.release = release;
     }
 
     @Override
@@ -44,8 +82,9 @@ public class Card {
         return "Card{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", editor='" + editor + '\'' +
+                ", edition='" + edition + '\'' +
+                ", release=" + release +
                 '}';
     }
-
-
 }
