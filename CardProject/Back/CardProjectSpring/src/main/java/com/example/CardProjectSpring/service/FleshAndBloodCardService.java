@@ -8,11 +8,13 @@ public interface FleshAndBloodCardService {
 
     FleshAndBloodCard saveFleshAndBloodCard(FleshAndBloodCard fleshAndBloodCard);
 
-    List<FleshAndBloodCard> findFleshAndBloodCardList();
+    List<FleshAndBloodCard> findFleshAndBloodCard();
 
-    FleshAndBloodCard findFleshAndBloodCardById(int idFleshAndBloodCard);
+    FleshAndBloodCard updateFleshAndBloodCard(FleshAndBloodCard administratorAccount, Integer idFleshAndBloodCard);
 
-    FleshAndBloodCard updateFleshAndBloodCard(FleshAndBloodCard fleshAndBloodCard, int idFleshAndBloodCard);
+    void deleteFleshAndBloodCardById(Integer idFleshAndBloodCard);
 
-    void deleteFleshAndBloodCardById(int idFleshAndBloodCard);
+    FleshAndBloodCard findFleshAndBloodCardById(Integer idFleshAndBloodCard);
+
+   FleshAndBloodCard findFleshAndBloodCardByName(String name);
 }

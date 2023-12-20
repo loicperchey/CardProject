@@ -5,22 +5,23 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
-
 @Entity
-@Table(name = "MagicCard")
+@Table(name = "FleshAndBloodHeroes")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Getter
 @Setter
 @RequiredArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
-public class MagicCard extends Card{
+@ToString
+public class FleshAndBloodHeroes extends Card {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private Integer idMagicCard;
+    private int idFleshAndBloodHeroes;
+    @NonNull
+    private Integer intelligence;
 
     @NonNull
-    private List<String> color;
+    private Integer pv;
 }

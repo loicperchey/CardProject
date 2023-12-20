@@ -12,5 +12,8 @@
         <property name="hibernate.show_sql">true</property>
         <mapping class="com.example.CardProjectSpring.entity.FleshAndBloodCard" />
         <mapping class="com.example.CardProjectSpring.entity.MagicCard" />
+        <mapping class="com.example.CardProjectSpring.entity.FleshAndBloodHeroes" />
+        <mapping class="com.example.CardProjectSpring.entity.FleshAndBloodDeck" />
+
     </session-factory>
 </hibernate-configuration>
