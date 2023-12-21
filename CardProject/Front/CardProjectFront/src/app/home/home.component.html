@@ -6,11 +6,17 @@
   <h2>{{compteur}}</h2>
 
 
-<h2>Pour ajouter des cartes FLesh and Blood, mettez le compteur à zéro. Sinon, ajoutez  <span>
-  <ng-template [ngIf]="compteur==0"><app-card-flesh-and-blood></app-card-flesh-and-blood></ng-template>
-  <ng-template [ngIf]="compteur<0"><app-card-magic></app-card-magic></ng-template>
-  <ng-template [ngIf]="compteur>0">Boeuf</ng-template>
-</span>
+<h2>Pour ajouter des cartes FLesh and Blood, mettez le compteur à zéro. Sinon, ajoutez
+  @if(compteur==0){
+  <app-card-flesh-and-blood></app-card-flesh-and-blood>
+  }
+  @else if(compteur<0){
+  <app-card-magic></app-card-magic>
+  }
+  @else if(compteur<0){
+  Boeuf
+  }
+
 </h2>
 
 

@@ -32,7 +32,7 @@ public class FleshAndBloodCardController {
     }
 
     @GetMapping("/findFleshAndBloodCardById/{idFleshAndBloodCard}")
-    public ResponseEntity<Map<String, FleshAndBloodCard>> findAdministratorById(@PathVariable Integer idFleshAndBloodCard) {
+    public ResponseEntity<Map<String, FleshAndBloodCard>> findFleshAndBloodCardById(@PathVariable Integer idFleshAndBloodCard) {
         Map<String, FleshAndBloodCard> hashMap = new HashMap<>();
         try {
             hashMap.put("Carte de Flesh and Blood trouvée", fleshAndBloodCardService.findFleshAndBloodCardById(idFleshAndBloodCard));
@@ -44,7 +44,7 @@ public class FleshAndBloodCardController {
     }
 
     @GetMapping("/findFleshAndBloodCardByName/{name}")
-    public ResponseEntity<Map<String, FleshAndBloodCard>> findAdministratorByName(@PathVariable String name) {
+    public ResponseEntity<Map<String, FleshAndBloodCard>> findFleshAndBloodCardByName(@PathVariable String name) {
         Map<String, FleshAndBloodCard> hashMap = new HashMap<>();
         try {
             hashMap.put("Carte de Flesh and Blood trouvée", fleshAndBloodCardService.findFleshAndBloodCardByName(name));
@@ -72,7 +72,7 @@ public class FleshAndBloodCardController {
     @PutMapping("/updateFleshAndBloodCard/{idFleshAndBloodCard}")
     public ResponseEntity<Map<String, FleshAndBloodCard>> updateFleshAndBloodCard(@PathVariable("idFleshAndBloodCard") Integer idFleshAndBloodCard,
                                                                                  @RequestBody FleshAndBloodCard fleshAndBloodCard) {
-        Map<String, FleshAndBloodCard> hashMap = new HashMap<>();
+        Map<String, FleshAndBloodCard> hashMap = new HashMap<String, FleshAndBloodCard>();
         try {
             hashMap.put("Carte modifiée",
                     fleshAndBloodCardService.updateFleshAndBloodCard(fleshAndBloodCard, idFleshAndBloodCard));

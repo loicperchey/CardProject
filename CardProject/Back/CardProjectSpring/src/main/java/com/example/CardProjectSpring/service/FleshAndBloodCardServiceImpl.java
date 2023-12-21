@@ -20,10 +20,14 @@ public class FleshAndBloodCardServiceImpl implements FleshAndBloodCardService{
     public List<FleshAndBloodCard> findFleshAndBloodCard() {
         return fleshAndBloodCardRepository.findAll();
     }
-
+    @Override
+    public FleshAndBloodCard findFleshAndBloodCardById(Integer idFleshAndBloodCard) {
+        return fleshAndBloodCardRepository.findById(idFleshAndBloodCard).orElse(null);
+    }
     @Override
     public FleshAndBloodCard updateFleshAndBloodCard(FleshAndBloodCard fleshAndBloodCard, Integer idFleshAndBloodCard) {
-        return fleshAndBloodCardRepository.findById(idFleshAndBloodCard).get();
+         FleshAndBloodCard fleshAndBloodCard1 = fleshAndBloodCardRepository.findById(idFleshAndBloodCard).get();
+        return fleshAndBloodCardRepository.save(fleshAndBloodCard1);
     }
 
     @Override
@@ -31,10 +35,7 @@ public class FleshAndBloodCardServiceImpl implements FleshAndBloodCardService{
         fleshAndBloodCardRepository.deleteById(idFleshAndBloodCard);
     }
 
-    @Override
-    public FleshAndBloodCard findFleshAndBloodCardById(Integer idFleshAndBloodCard) {
-        return fleshAndBloodCardRepository.findById(idFleshAndBloodCard).orElse(null);
-    }
+
 
     @Override
     public FleshAndBloodCard findFleshAndBloodCardByName(String name) {

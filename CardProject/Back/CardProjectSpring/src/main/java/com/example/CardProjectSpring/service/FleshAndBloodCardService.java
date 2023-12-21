@@ -7,14 +7,14 @@ import java.util.List;
 public interface FleshAndBloodCardService {
 
     FleshAndBloodCard saveFleshAndBloodCard(FleshAndBloodCard fleshAndBloodCard);
-
+    FleshAndBloodCard findFleshAndBloodCardById(Integer idFleshAndBloodCard);
     List<FleshAndBloodCard> findFleshAndBloodCard();
 
-    FleshAndBloodCard updateFleshAndBloodCard(FleshAndBloodCard administratorAccount, Integer idFleshAndBloodCard);
+    FleshAndBloodCard updateFleshAndBloodCard(FleshAndBloodCard fleshAndBloodCard, Integer idFleshAndBloodCard);
 
     void deleteFleshAndBloodCardById(Integer idFleshAndBloodCard);
 
-    FleshAndBloodCard findFleshAndBloodCardById(Integer idFleshAndBloodCard);
+
 
    FleshAndBloodCard findFleshAndBloodCardByName(String name);
 }

@@ -1,5 +1,6 @@
 package com.example.CardProjectSpring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -39,6 +40,7 @@ public class FleshAndBloodCard extends Card{
 
     @ManyToMany
     @NonNull
+    @JsonIgnore
     private Collection<FleshAndBloodDeck> fleshAndBloodDeckListPresence;
 
 
