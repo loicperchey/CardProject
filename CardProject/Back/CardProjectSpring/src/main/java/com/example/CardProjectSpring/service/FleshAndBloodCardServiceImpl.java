@@ -2,6 +2,8 @@ package com.example.CardProjectSpring.service;
 
 import com.example.CardProjectSpring.entity.FleshAndBloodCard;
 import com.example.CardProjectSpring.repository.FleshAndBloodCardRepository;
+import jakarta.transaction.TransactionScoped;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,21 +22,23 @@ public class FleshAndBloodCardServiceImpl implements FleshAndBloodCardService{
     public List<FleshAndBloodCard> findFleshAndBloodCard() {
         return fleshAndBloodCardRepository.findAll();
     }
+
     @Override
-    public FleshAndBloodCard findFleshAndBloodCardById(Integer idFleshAndBloodCard) {
-        return fleshAndBloodCardRepository.findById(idFleshAndBloodCard).orElse(null);
-    }
-    @Override
-    public FleshAndBloodCard updateFleshAndBloodCard(FleshAndBloodCard fleshAndBloodCard, Integer idFleshAndBloodCard) {
-         FleshAndBloodCard fleshAndBloodCard1 = fleshAndBloodCardRepository.findById(idFleshAndBloodCard).get();
-        return fleshAndBloodCardRepository.save(fleshAndBloodCard1);
+    public FleshAndBloodCard updateFleshAndBloodCard(FleshAndBloodCard fleshAndBloodCard, int id) {
+        fleshAndBloodCard = fleshAndBloodCardRepository.findById(id).orElse(null);
+        assert fleshAndBloodCard != null;
+        return fleshAndBloodCardRepository.save(fleshAndBloodCard);
     }
 
     @Override
-    public void deleteFleshAndBloodCardById(Integer idFleshAndBloodCard) {
-        fleshAndBloodCardRepository.deleteById(idFleshAndBloodCard);
+    public void deleteFleshAndBloodCardById(int id) {
+        fleshAndBloodCardRepository.deleteById(id);
     }
 
+    @Override
+    public FleshAndBloodCard findFleshAndBloodCardById(int id) {
+        return fleshAndBloodCardRepository.findById(id).orElse(null);
+    }
 
 
     @Override

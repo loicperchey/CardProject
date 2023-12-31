@@ -2,6 +2,7 @@ package com.example.CardProjectSpring.controller;
 
 import com.example.CardProjectSpring.entity.FleshAndBloodCard;
 import com.example.CardProjectSpring.service.FleshAndBloodCardService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,11 +32,11 @@ public class FleshAndBloodCardController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @GetMapping("/findFleshAndBloodCardById/{idFleshAndBloodCard}")
-    public ResponseEntity<Map<String, FleshAndBloodCard>> findFleshAndBloodCardById(@PathVariable Integer idFleshAndBloodCard) {
+    @GetMapping("/findFleshAndBloodCardById/{id}")
+    public ResponseEntity<Map<String, FleshAndBloodCard>> findFleshAndBloodCardById(@PathVariable int id) {
         Map<String, FleshAndBloodCard> hashMap = new HashMap<>();
         try {
-            hashMap.put("Carte de Flesh and Blood trouvée", fleshAndBloodCardService.findFleshAndBloodCardById(idFleshAndBloodCard));
+            hashMap.put("Carte de Flesh and Blood trouvée", fleshAndBloodCardService.findFleshAndBloodCardById(id));
         } catch (Exception e) {
             hashMap.put("Erreur : la carte n'a pas été trouvée à cause de " + e.getMessage(), null);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
@@ -69,13 +70,12 @@ public class FleshAndBloodCardController {
         return ResponseEntity.ok(hashMap);
     }
 
-    @PutMapping("/updateFleshAndBloodCard/{idFleshAndBloodCard}")
-    public ResponseEntity<Map<String, FleshAndBloodCard>> updateFleshAndBloodCard(@PathVariable("idFleshAndBloodCard") Integer idFleshAndBloodCard,
-                                                                                 @RequestBody FleshAndBloodCard fleshAndBloodCard) {
+   @PostMapping("/updateFleshAndBloodCard/{id}")
+    public ResponseEntity<Map<String, FleshAndBloodCard>> updateFleshAndBloodCard(@RequestBody FleshAndBloodCard fleshAndBloodCard,@PathVariable("id") int id) {
         Map<String, FleshAndBloodCard> hashMap = new HashMap<String, FleshAndBloodCard>();
         try {
             hashMap.put("Carte modifiée",
-                    fleshAndBloodCardService.updateFleshAndBloodCard(fleshAndBloodCard, idFleshAndBloodCard));
+                    fleshAndBloodCardService.updateFleshAndBloodCard(fleshAndBloodCard, id));
         } catch (Exception e) {
             hashMap.put("Erreur : la carte n'a pas été modifiée à cause de " + e.getMessage(), null);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -83,12 +83,14 @@ public class FleshAndBloodCardController {
         }
         return ResponseEntity.ok(hashMap);
     }
+
+
 //ça fonctionne
 
-    @DeleteMapping("/deleteFleshAndBloodCard/{idFleshAndBloodCard}")
-    public ResponseEntity<String> deleteFleshAndBloodCard(@PathVariable Integer idFleshAndBloodCard){
+    @DeleteMapping("/deleteFleshAndBloodCard/{id}")
+    public ResponseEntity<String> deleteFleshAndBloodCard(@PathVariable int id){
         try{
-            fleshAndBloodCardService.deleteFleshAndBloodCardById(idFleshAndBloodCard);
+            fleshAndBloodCardService.deleteFleshAndBloodCardById(id);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
 

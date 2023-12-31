@@ -21,17 +21,17 @@ public class FleshAndBloodDeck {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private Integer idFleshAndBloodDeck;
+    private int id;
 
     @NonNull
     private String deckName;
 
-    @ManyToMany
+   /* @ManyToMany
     @NonNull
     @JoinTable(
             name="FleshAndBloodDeck_FleshAndBloodCard",
             joinColumns = @JoinColumn(name = "idFleshAndBloodCard"),
             inverseJoinColumns = @JoinColumn(name = "idFleshAndBloodDeck")
     )
-    private Collection<FleshAndBloodCard> fleshAndBloodCardList;
+    private Collection<FleshAndBloodCard> fleshAndBloodCardList;*/
 }

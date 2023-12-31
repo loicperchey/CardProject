@@ -19,7 +19,7 @@ public class MagicCard extends Card{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private Integer idMagicCard;
+    private int id;
 
     @NonNull
     private List<String> color;

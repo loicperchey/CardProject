@@ -22,26 +22,26 @@ public class FleshAndBloodCard extends Card{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private Integer idFleshAndBloodCard;
+    public int id;
     @NonNull
-    private Integer cost;
+    public Integer cost;
     @NonNull
-    private Integer pitch;
+    public Integer pitch;
     @NonNull
-    private String type;
+    public String type;
     @NonNull
-    private String talent;
+    public String talent;
     @NonNull
-    private String text;
+    public String text;
     @NonNull
-    private int attack;
+    public int attack;
     @NonNull
-    private int defense;
+    public int defense;
 
-    @ManyToMany
+   /* @ManyToMany
     @NonNull
     @JsonIgnore
-    private Collection<FleshAndBloodDeck> fleshAndBloodDeckListPresence;
+    private Collection<FleshAndBloodDeck> fleshAndBloodDeckListPresence;*/
 
 
 }

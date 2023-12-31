@@ -18,7 +18,7 @@ public class FleshAndBloodHeroes extends Card {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private int idFleshAndBloodHeroes;
+    private int id;
     @NonNull
     private Integer intelligence;
 
