@@ -70,7 +70,7 @@ public class FleshAndBloodCardController {
         return ResponseEntity.ok(hashMap);
     }
 
-   @PostMapping("/updateFleshAndBloodCard/{id}")
+   @PutMapping("/updateFleshAndBloodCard/{id}")
     public ResponseEntity<Map<String, FleshAndBloodCard>> updateFleshAndBloodCard(@RequestBody FleshAndBloodCard fleshAndBloodCard,@PathVariable("id") int id) {
         Map<String, FleshAndBloodCard> hashMap = new HashMap<String, FleshAndBloodCard>();
         try {
