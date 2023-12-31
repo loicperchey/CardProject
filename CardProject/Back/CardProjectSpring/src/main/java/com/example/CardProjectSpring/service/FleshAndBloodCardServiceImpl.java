@@ -4,6 +4,7 @@ import com.example.CardProjectSpring.entity.FleshAndBloodCard;
 import com.example.CardProjectSpring.repository.FleshAndBloodCardRepository;
 import jakarta.transaction.TransactionScoped;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,9 @@ public class FleshAndBloodCardServiceImpl implements FleshAndBloodCardService{
 
     @Override
     public FleshAndBloodCard updateFleshAndBloodCard(FleshAndBloodCard fleshAndBloodCard, int id) {
-        fleshAndBloodCard = fleshAndBloodCardRepository.findById(id).orElse(null);
-        assert fleshAndBloodCard != null;
-        return fleshAndBloodCardRepository.save(fleshAndBloodCard);
+        FleshAndBloodCard fleshAndBloodCard1 = fleshAndBloodCardRepository.findById(id).get();
+        BeanUtils.copyProperties(fleshAndBloodCard, fleshAndBloodCard1, "id");
+        return fleshAndBloodCardRepository.saveAndFlush(fleshAndBloodCard1);
     }
 
     @Override
