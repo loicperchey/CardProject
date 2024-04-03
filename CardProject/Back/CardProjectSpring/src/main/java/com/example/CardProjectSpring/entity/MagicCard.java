@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.Year;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,6 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Getter
 @Setter
-@RequiredArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
 public class MagicCard extends Card{
@@ -21,6 +21,11 @@ public class MagicCard extends Card{
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    @NonNull
+
     private List<String> color;
+
+    public MagicCard(String name, String edition, Year year, List<String> color) {
+        super(name, edition, year);
+        this.color = color;
+    }
 }

@@ -13,7 +13,6 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Getter
 @Setter
-@RequiredArgsConstructor
 @NoArgsConstructor
 @ToString
 public class FleshAndBloodDeck {
@@ -23,15 +22,19 @@ public class FleshAndBloodDeck {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    @NonNull
+
     private String deckName;
 
-   /* @ManyToMany
-    @NonNull
+ @ManyToMany
     @JoinTable(
             name="FleshAndBloodDeck_FleshAndBloodCard",
             joinColumns = @JoinColumn(name = "idFleshAndBloodCard"),
             inverseJoinColumns = @JoinColumn(name = "idFleshAndBloodDeck")
     )
-    private Collection<FleshAndBloodCard> fleshAndBloodCardList;*/
+    private Collection<FleshAndBloodCard> fleshAndBloodCardList;
+
+    public FleshAndBloodDeck(String deckName, Collection<FleshAndBloodCard> fleshAndBloodCardList) {
+        this.deckName = deckName;
+        this.fleshAndBloodCardList = fleshAndBloodCardList;
+    }
 }

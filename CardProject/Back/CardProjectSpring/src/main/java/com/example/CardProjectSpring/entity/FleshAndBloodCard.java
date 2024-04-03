@@ -6,6 +6,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.Year;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Getter
 @Setter
-@RequiredArgsConstructor
+
 @NoArgsConstructor
 @ToString
 public class FleshAndBloodCard extends Card{
@@ -23,25 +24,35 @@ public class FleshAndBloodCard extends Card{
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     public int id;
-    @NonNull
+
+
     public Integer cost;
-    @NonNull
+
     public Integer pitch;
-    @NonNull
+
     public String type;
-    @NonNull
+
     public String talent;
-    @NonNull
+
     public String text;
-    @NonNull
+
     public int attack;
-    @NonNull
+
     public int defense;
 
-   /* @ManyToMany
-    @NonNull
+    @ManyToMany
     @JsonIgnore
-    private Collection<FleshAndBloodDeck> fleshAndBloodDeckListPresence;*/
+    private Collection<FleshAndBloodDeck> fleshAndBloodDeckListPresence;
 
-
+    public FleshAndBloodCard(String name, String edition, Year year, Integer cost, Integer pitch, String type, String talent, String text, int attack, int defense, Collection<FleshAndBloodDeck> fleshAndBloodDeckListPresence) {
+        super(name, edition, year);
+        this.cost = cost;
+        this.pitch = pitch;
+        this.type = type;
+        this.talent = talent;
+        this.text = text;
+        this.attack = attack;
+        this.defense = defense;
+        this.fleshAndBloodDeckListPresence = fleshAndBloodDeckListPresence;
+    }
 }
