@@ -1,5 +1,6 @@
 package com.example.CardProjectSpring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -22,8 +23,17 @@ public class FleshAndBloodDeck {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-
+    @NonNull
     private String deckName;
+
+    @NonNull
+    private String format;
+
+    @NonNull
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "heroesDeck")
+    private FleshAndBloodHeroes heroes;
 
  @ManyToMany
     @JoinTable(
@@ -33,8 +43,10 @@ public class FleshAndBloodDeck {
     )
     private Collection<FleshAndBloodCard> fleshAndBloodCardList;
 
-    public FleshAndBloodDeck(String deckName, Collection<FleshAndBloodCard> fleshAndBloodCardList) {
+    public FleshAndBloodDeck(@NonNull String deckName, @NonNull String format, @NonNull FleshAndBloodHeroes heroes, Collection<FleshAndBloodCard> fleshAndBloodCardList) {
         this.deckName = deckName;
+        this.format = format;
+        this.heroes = heroes;
         this.fleshAndBloodCardList = fleshAndBloodCardList;
     }
 }

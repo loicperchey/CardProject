@@ -21,11 +21,14 @@ public class MagicCard extends Card{
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-
+    @NonNull
     private List<String> color;
 
-    public MagicCard(String name, String edition, Year year, List<String> color) {
+    private String block;
+
+    public MagicCard(String name, String edition, Year year, @NonNull List<String> color, String block) {
         super(name, edition, year);
         this.color = color;
+        this.block = block;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.CardProjectSpring.controller;
 
 import com.example.CardProjectSpring.entity.FleshAndBloodCard;
+import com.example.CardProjectSpring.entity.FleshAndBloodDeck;
 import com.example.CardProjectSpring.service.FleshAndBloodCardService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +16,21 @@ import java.util.Map;
 @CrossOrigin
 @RestController
 @RequestMapping("/FleshAndBloodCardController")
-public class FleshAndBloodCardController {
+public class FleshAndBloodCardController extends AbstractController{
 
-    @Autowired
-    private FleshAndBloodCardService fleshAndBloodCardService;
 
+    private final FleshAndBloodCardService fleshAndBloodCardService;
+
+    public FleshAndBloodCardController(FleshAndBloodCardService fleshAndBloodCardService) {
+        this.fleshAndBloodCardService = fleshAndBloodCardService;
+    }
     @GetMapping("/findFleshAndBloodCard")
-    public ResponseEntity<Map<String, List<FleshAndBloodCard>>> findAllFleshAndBloodCard() {
+    public ResponseEntity<Map<String, List<FleshAndBloodCard>>> findFleshAndBloodDeck() {
         Map<String, List<FleshAndBloodCard>> hashMap = new HashMap<>();
         try {
-            hashMap.put("Catalogue des cartes de Flesh and Blood chargé", fleshAndBloodCardService.findFleshAndBloodCard());
+            hashMap.put("Catalogue des decks de Flesh and Blood chargé", fleshAndBloodCardService.findFleshAndBloodCard());
         } catch (Exception e) {
-            hashMap.put("Erreur : les cartes ne sont pas trouvées à cause de " + e.getMessage(), null);
+            hashMap.put("Erreur : les decks ne sont pas trouvées à cause de " + e.getMessage(), null);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(hashMap);
         }
         return ResponseEntity.ok(hashMap);

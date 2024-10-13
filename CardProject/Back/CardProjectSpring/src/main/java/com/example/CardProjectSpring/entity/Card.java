@@ -21,10 +21,13 @@ import java.util.Date;
 @SuperBuilder
 public class Card {
 
+    @NonNull
     public String name;
 
+    @NonNull
     public String edition;
 
+    @NonNull
     public Year year;
 
     public Card(String name, String edition, Year year) {
